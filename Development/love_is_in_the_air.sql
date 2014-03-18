@@ -38,9 +38,20 @@ INSERT INTO `creature_involvedrelation` VALUES
 (37172, 24541),
 (37172, 24576),
 (38328, 24850),
+(38328, 24576),
 (38328, 24851);
 
 UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` = 24536;
 UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` = 24805;
+UPDATE `quest_template` SET `PrevQuestId` = 24576 WHERE `id` = 28935;
+
+-- SAI
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (37172) AND `id` IN (3);
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (3296) AND `id` IN (1);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `target_type`,`target_param1`,`target_param2`, `comment`) VALUES 
+(37172, 0, 3, 19, 100, 0, 24536, 0, 0, 0, 11, 71520, 2, 11, 3296, 50, 'On Questaccept - spellcast'),
+(3296, 0, 1, 8, 100, 0, 70192, 1, 1, 1, 33, 37558, 0, 7, 0, 0, 'On spellhit - give questcredit'); -- doesnt work dunno why
+
 
 -- conditions
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 19 AND `SourceEntry` IN (28935);
