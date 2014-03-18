@@ -1,0 +1,66 @@
+BWD:
+Magmaul:
+10HC: 51102
+25HC: 51103
+
+Omnomnom:
+10HC:
+Arkanotron: 49057
+Magmatron: 49054
+Toxitron: 49051
+Electron: 49048
+
+25HC:
+Arkanotron: 49058
+Magmatron: 49055
+Toxitron: 49052
+Electron: 49049
+
+Maloriak: 
+10HC: 49980
+25HC: 49986
+
+Atramedes:
+10HC: 49584
+25HC: 49585
+
+Chimaoron:
+10HC: 47775
+25HC: 47776
+
+NEF:
+10HC: 51105
+25HC: 51106
+
+BoT:
+Halfus:
+10HC: 46210
+25HC: 46211
+
+Valiona:
+10HC: 49898
+25HC: 49899
+Theralion:
+10HC: 49904
+25HC: 49905
+
+Elementium:
+10HC: 49620
+25HC: 49621
+
+Chogall:
+10HC: 50132
+25HC: 50133
+
+Sinestra:
+10HC: 45213
+25HC: 49744
+
+Tot4w:
+Nezir:
+10HC: 50108
+25HC: 50118
+
+Al'Akir:
+10HC: 50217
+25HC: 50231

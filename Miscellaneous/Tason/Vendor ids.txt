@@ -1,0 +1,79 @@
+Priest Holy:
+65229 -- Priest Holy hands
+65230 -- Priest Holy head
+65231 -- Priest Holy legs
+65232 -- Priest Holy shoulders
+65233 -- Priest Holy chest
+
+Priest Shadow:
+65234 -- Priest Holy hands
+65235 -- Priest Holy head
+65236 -- Priest Holy legs
+65237 -- Priest Holy chest
+65238 -- Priest Holy shoulders
+
+Rouge:
+65239 -- Rouge chest
+65240 -- Rouge hands
+65241 -- Rouge head
+65242 -- Rouge legs 
+65243 -- Rouge shoulders
+ 
+Shaman Ele:
+65254 -- Shaman Ele chest
+65255 -- Shaman Ele hands
+65256 -- Shaman Ele head
+65257 -- Shaman Ele legs
+65258 -- Shaman Ele shoulders
+
+Shaman VS:
+65249 -- Shaman VS chest
+65250 -- Shaman VS hands
+65251 -- Shaman VS head
+65252 -- Shaman VS legs
+65253 -- Shaman VS shoulders
+
+Shaman Resto:
+65244 -- Shaman Resto chest
+65245 -- Shaman Resto hands
+65246 -- Shaman Resto head
+65247 -- Shaman Resto legs
+65248 -- Shaman Resto shoulders
+
+Warlock:
+65259 -- Warlock hands
+65260 -- Warlock head
+65261 -- Warlock legs
+65262 -- Warlock chest
+65263 -- Warlock shoulders
+
+Warri DPS:
+65264 -- Warri DPS chest
+65265 -- Warri DPS hands
+65266 -- Warri DPS head
+65267 -- Warri DPS legs
+65268 -- Warri DPS shoulders
+
+Warri Prot:
+65269 -- Warri Prot chest
+65270 -- Warri Prot hands
+65271 -- Warri Prot head
+65272 -- Warri Prot legs
+65273 -- Warri Prot shoulders
+
+66998 -- Essence
+65001 -- Head Pala, Priest, Warlock
+65000 -- Head Warri, Hunter, Shaman
+65002 -- Head Rogue, DK, Mage, Druid
+65088 -- Shoulder Pala, Priest, Warlock
+65087 -- Shoulder Warri, Hunter, Shaman
+65089 -- Shoulder Rogue, DK, Mage, Druid
+67428 -- Legs Pala, Priest, Warlock
+67427 -- Legs Warri, Hunter, Shaman
+67426 -- Legs Rogue, DK, Mage, Druid
+67429 -- Hands Pala, Priest, Warlock
+67430 -- Hands Warri, Hunter, Shaman
+67431 -- Hands Rogue, DK, Mage, Druid
+67423 -- Chest Pala, Priest, Warlock
+67424 -- Chest Warri, Hunter, Shaman
+67425 -- Chest Rogue, DK, Mage, Druid

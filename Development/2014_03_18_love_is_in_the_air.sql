@@ -1,6 +1,7 @@
 -- Love is in the Air (ID: 8)
 -- guidrange 1000000-1010000
 -- Horde
+-- Orgrimmar
 -- creatures / gameobject correction
 DELETE FROM `gameobject` WHERE `guid` = 42843;
 UPDATE `creature` SET `position_x` = 1593.34, `position_y` = -4429.06, `position_z` = 15.52, `orientation` = 1.31 WHERE `guid` = 127011;
@@ -40,6 +41,6 @@ INSERT INTO `creature_involvedrelation` VALUES
 (38328, 24851);
 
 UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` = 24536;
-UPDATE `quest_template` SET `NextQuestIdChain` = 0 WHERE `id` = 24805;
+UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` = 24805;
 
 -- conditions
