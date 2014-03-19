@@ -1,8 +1,15 @@
 -- Love is in the Air (ID: 8)
 -- guidrange 1000000-1010000
 -- Horde
--- Orgrimmar
 -- creatures / gameobject correction
+UPDATE `creature_template` SET `ScriptName` = '' WHERE `entry` = 3296; -- guard_generic (Dunno what its necessary for)
+UPDATE `gameobject_template` SET `AIName` = 'SmartGameObjectAI' WHERE `entry` IN (201778);
+
+DELETE FROM `creature_template` WHERE `entry` IN (71000);
+INSERT INTO `creature_template` (`entry`, `modelid1`,  `modelid2`,  `modelid3`,  `modelid4`, `name`, `minlevel`, `maxlevel`, `faction_a`, `faction_h`, `npcflag`, `speed_walk`, `speed_run`, `mindmg`, `maxdmg`, `attackpower`, `unit_flags`, `unit_flags2`, `type_flags`, `AIName`) VALUES 
+(71000, 4449, 4449, 4449, 4449, 'Crushing the Crown - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 0, 1048576, 'SmartAI');
+
+-- Orgrimmar
 DELETE FROM `gameobject` WHERE `guid` = 42843;
 UPDATE `creature` SET `position_x` = 1593.34, `position_y` = -4429.06, `position_z` = 15.52, `orientation` = 1.31 WHERE `guid` = 127011;
 UPDATE `creature` SET `position_x` = 1591.84, `position_y` = -4429.29, `position_z` = 15.58, `orientation` = 1.31 WHERE `guid` = 127025;
@@ -24,7 +31,7 @@ INSERT INTO `game_event_creature` (`eventEntry`, `guid`) VALUES
 (8, 1000001);
 
 -- quests
-DELETE FROM `creature_questrelation` WHERE `id` IN (37172, 38328) AND `quest` IN (24536, 24541, 24850, 24576, 24851);
+DELETE FROM `creature_questrelation` WHERE `id` IN (37172, 38328) AND `quest` IN (24536, 24541, 24850, 24576, 24851); 
 INSERT INTO `creature_questrelation` VALUES
 (37172, 24536),
 (37172, 24541),
@@ -44,14 +51,22 @@ INSERT INTO `creature_involvedrelation` VALUES
 UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` = 24536;
 UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` = 24805;
 UPDATE `quest_template` SET `PrevQuestId` = 24576 WHERE `id` = 28935;
+UPDATE `quest_template` SET `method` = 0 WHERE `id` IN (24849, 24851); -- This quest needs a script
 
 -- SAI
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (37172) AND `id` IN (3);
-DELETE FROM `smart_scripts` WHERE `entryorguid` IN (3296) AND `id` IN (1);
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (3296) AND `id` IN (1,2);
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (201778, 201716, 71000);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `target_type`,`target_param1`,`target_param2`, `comment`) VALUES 
 (37172, 0, 3, 19, 100, 0, 24536, 0, 0, 0, 11, 71520, 2, 11, 3296, 50, 'On Questaccept - spellcast'),
-(3296, 0, 1, 8, 100, 0, 70192, 1, 1, 1, 33, 37558, 0, 7, 0, 0, 'On spellhit - give questcredit'); -- doesnt work dunno why
-
+(3296, 0, 1, 8, 100, 0, 70192, 1, 1, 1, 33, 37558, 0, 7, 0, 0, 'On spellhit - give questcredit'), -- doesnt work cause of their script
+(201778, 1, 0, 64, 100, 0, 0, 0, 0, 0, 15, 24541, 0, 7, 0, 0, 'On gossip hello - give questcredit');
+--(71000, 0, 0, 60, 100, 0, 71024, 1, 1, 1, 33, 38035, 0, 18, 100, 0, 'On spellhit - give questcredit'); -- doesnt work cause 71024 is an area effect // need anoter solution
 
 -- conditions
-DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 19 AND `SourceEntry` IN (28935);
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 13 AND `SourceEntry` IN (71024);
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 15 AND `SourceGroup` IN (10929);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
+(15,10929,0,0,0,9,0,24657,0,0,0,0,0,'','Quest needed for gossip to be shown'),
+(15,10929,0,0,1,9,0,24576,0,0,0,0,0,'','Quest needed for gossip to be shown'),
+(13,1,71024,0,0,31,0,3,71000,0,0,0,0,'','spell_implecit_target Trigger NPC');
