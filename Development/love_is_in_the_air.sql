@@ -32,7 +32,8 @@ INSERT INTO `game_event_creature` (`eventEntry`, `guid`) VALUES
 
 -- quests
 DELETE FROM `creature_questrelation` WHERE `id` IN (37172, 38328) AND `quest` IN (24536, 24541, 24850, 24576, 24851); 
-INSERT INTO `creature_questrelation` VALUES
+DELETE FROM `game_event_creature_quest` WHERE `id` IN (37172, 38328) AND `quest` IN (24536, 24541, 24850, 24576, 24851); 
+INSERT INTO `game_event_creature_quest` VALUES
 (37172, 24536),
 (37172, 24541),
 (37172, 24850),
