@@ -7,6 +7,9 @@ INSERT INTO `creature_questrelation` VALUES
 UPDATE `quest_template` SET `NextQuestId` = 28934, `NextQuestIdChain` = 28934 WHERE `id` = 24657;
 UPDATE `quest_template` SET `PrevQuestId` = 24657 WHERE `id` = 28934;
 
+UPDATE `quest_template` SET `NextQuestId` = 28935, `NextQuestIdChain` = 28935 WHERE `id` = 24576;
+UPDATE `quest_template` SET `PrevQuestId` = 24576 WHERE `id` = 28935;
+
 
 DELETE FROM `conditions` WHERE `SourceEntry` IN (44731, 22206) AND `ConditionTypeOrReference` = 12;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `ConditionTypeOrReference`, `ConditionValue1`, `Comment`) VALUES
