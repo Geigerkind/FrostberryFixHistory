@@ -1,4 +1,4 @@
-DELETE FROM `creature_questrelation` WHERE `quest` IN (24609, 24597);
+DELETE FROM `creature_questrelation` WHERE `quest` IN (24615, 24609, 24597);
 INSERT INTO `creature_questrelation` VALUES
 (38043, 24615), -- silvermoon
 (38041, 24609), -- ironforge
