@@ -1,6 +1,5 @@
 -- Love is in the Air (ID: 8)
 -- guidrange 1000000-1010000
--- Horde
 -- creatures / gameobject correction
 DELETE FROM `gameobject` WHERE `id` = 181086;
 DELETE FROM `gossip_menu_option` WHERE `menu_id` = 10976 AND `id` = 2;
@@ -8,10 +7,6 @@ UPDATE `creature_template` SET `ScriptName` = '' WHERE `entry` IN (3296, 68); --
 UPDATE `gameobject_template` SET `AIName` = 'SmartGameObjectAI' WHERE `entry` IN (201778);
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` IN (38042, 38043, 38044, 38045, 37887, 38041, 38040, 38039);
 UPDATE `creature_template` SET `npcflag` = 3 WHERE `entry` IN (38043, 37887, 38041);
-
-DELETE FROM `creature_template` WHERE `entry` IN (71000);
-INSERT INTO `creature_template` (`entry`, `modelid1`,  `modelid2`,  `modelid3`,  `modelid4`, `name`, `minlevel`, `maxlevel`, `faction_a`, `faction_h`, `npcflag`, `speed_walk`, `speed_run`, `mindmg`, `maxdmg`, `attackpower`, `unit_flags`, `unit_flags2`, `type_flags`, `AIName`) VALUES 
-(71000, 4449, 4449, 4449, 4449, 'Crushing the Crown - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 0, 1048576, 'SmartAI');
 
 -- Stormwind / Ironforge / Exodar / Darnassus
 DELETE FROM `gameobject` WHERE `guid` IN (27100, 27099, 96539, 42842);
@@ -51,6 +46,13 @@ INSERT INTO `game_event_creature` (`eventEntry`, `guid`) VALUES
 (8, 1000000),
 (8, 1000001);
 
+DELETE FROM `game_event_creature` WHERE `eventEntry` = 8 AND `guid` IN (SELECT `guid` FROM `creature` WHERE `id` = 51613);
+INSERT INTO `game_event_creature` (`guid`, `eventEntry`)
+SELECT 
+`creature`.`guid`, 8
+FROM `creature`
+WHERE `id` = 51613;
+
 -- quests
 DELETE FROM `game_event_creature_quest` WHERE `id` IN (37172, 38328, 37675, 38043, 37887, 38041, 38066, 38325) AND `quest` IN (24536, 24541, 24850, 24576, 24851, 24629, 24615, 24597, 24609, 24655, 24656, 24848, 24657, 24849);
 DELETE FROM `creature_questrelation` WHERE `id` IN (37172, 38328, 38043, 37887, 38041, 38066, 38325) AND `quest` IN (24536, 24541, 24850, 24576, 24851, 24615, 24597, 24609, 24655, 24656, 24848, 24657, 24849); 
@@ -84,12 +86,13 @@ INSERT INTO `creature_involvedrelation` VALUES
 (38325, 24848),
 (38325, 24849);
 
-UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` = 24536;
-UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` = 24805;
-UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` = 24655;
-UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` = 24804;
+UPDATE `quest_template` SET `PrevQuestId` = 0 WHERE `id` IN (24536, 24655);
+UPDATE `quest_template` SET `NextQuestId` = 0 WHERE `id` IN (24805, 24804);
 UPDATE `quest_template` SET `PrevQuestId` = 24576 WHERE `id` = 28935;
 UPDATE `quest_template` SET `method` = 0 WHERE `id` IN (24849, 24851); -- This quest needs a script
+
+DELETE FROM `spell_script_names` WHERE `spell_id` = 71024;
+INSERT INTO `spell_script_names` VALUES (71024, 'spell_snagglebolts_khorium_bomb');
 
 -- SAI
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (37172, 38066) AND `id` IN (2,3,4,5);
@@ -132,5 +135,53 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (15,10948,0,0,0,2,0,49661,1,0,1,0,0,'','only show if player has not item'),
 (15,10976,0,0,0,2,0,50130,1,0,1,0,0,'','only show if player has not item'),
 (15,10976,0,0,0,9,0,28935,0,0,0,0,0,'','show if player is on quest'),
-(15,10976,0,0,1,9,0,28934,0,0,0,0,0,'','show if player is on quest'),
-(13,1,71024,0,0,31,0,3,71000,0,0,0,0,'','spell_implecit_target Trigger NPC');
+(15,10976,0,0,1,9,0,28934,0,0,0,0,0,'','show if player is on quest');
+-- (13,1,71024,0,0,31,0,3,71000,0,0,0,0,'','spell_implecit_target Trigger NPC'); -- need another solution
+
+-- part two
+DELETE FROM `creature_questrelation` WHERE `quest` IN (24615, 24609, 24597);
+INSERT INTO `creature_questrelation` VALUES
+(38043, 24615), -- silvermoon
+(38041, 24609), -- ironforge
+(37887, 24597); -- stormwind
+
+UPDATE `quest_template` SET `NextQuestId` = 28934, `NextQuestIdChain` = 28934 WHERE `id` = 24657;
+UPDATE `quest_template` SET `PrevQuestId` = 24657 WHERE `id` = 28934;
+
+UPDATE `quest_template` SET `NextQuestId` = 28935, `NextQuestIdChain` = 28935 WHERE `id` = 24576;
+UPDATE `quest_template` SET `PrevQuestId` = 24576 WHERE `id` = 28935;
+
+
+DELETE FROM `conditions` WHERE `SourceEntry` IN (44731, 22206) AND `ConditionTypeOrReference` = 12;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `ConditionTypeOrReference`, `ConditionValue1`, `Comment`) VALUES
+-- normals
+(1, 42333, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 39679, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 40319, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+-- heroics
+(1, 49624, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 39680, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 48784, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+-- Lord Godfrey normal
+(1, 46964, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 46964, 22206, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+-- Lord Godfrey heroic
+(1, 49712, 44731, 12, 8, 'Rose Bouquet only drops on eventstate = active'),
+(1, 49712, 22206, 12, 8, 'Rose Bouquet only drops on eventstate = active');
+
+DELETE FROM `creature_loot_template` WHERE `item` IN (44731, 22206);
+INSERT INTO `creature_loot_template` VALUES
+-- normals
+(42333, 44731, 25, 1, 0, 1, 1),
+(39679, 44731, 25, 1, 0, 1, 1),
+(40319, 44731, 25, 1, 0, 1, 1),
+-- heroics
+(49624, 44731, 100, 1, 0, 1, 1),
+(39680, 44731, 100, 1, 0, 1, 1),
+(48784, 44731, 100, 1, 0, 1, 1),
+-- Lord Godfrey normal
+(46964, 44731, 25, 1, 1, 1, 1),
+(46964, 22206, 25, 1, 1, 1, 1),
+-- Lord Godfrey heroic
+(49712, 44731, 100, 1, 1, 1, 1),
+(49712, 22206, 100, 1, 1, 1, 1);
