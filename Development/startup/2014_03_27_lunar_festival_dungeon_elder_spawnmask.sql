@@ -1,0 +1,1 @@
+UPDATE `creature` SET `spawnMask` = 3 WHERE `guid` IN (902047, 900140, 899069);
