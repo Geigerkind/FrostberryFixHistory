@@ -147,7 +147,7 @@ UPDATE `quest_template` SET `RequiredNpcOrGo1` = 0 WHERE `id` IN (300000, 300001
 
 UPDATE `quest_template` SET `RequiredNpcOrGoCount1` = 1 WHERE `id` IN (13886, 29328, 29327, 25045, 27886, 25479, 25481, 25551, 26622, 27060, 27468, 27526, 27693, 27778, 27828, 27834, 27835, 27934, 28052, 28202, 28203, 28204, 28205);
 UPDATE `quest_template` SET `RequiredNpcOrGoCount2` = 1 WHERE `id` IN (29328, 25045, 27060, 27468, 27828, 27834, 27835);
-UPDATE `quest_template` SET `RequiredNpcOrGoCount2` = 1 WHERE `id` IN (28170);
+UPDATE `quest_template` SET `RequiredNpcOrGoCount3` = 1 WHERE `id` IN (28170);
 
 UPDATE `quest_template` SET `RequiredNpcOrGoCount1` = 7 WHERE `id` IN (27990);
 UPDATE `quest_template` SET `RequiredNpcOrGoCount1` = 5 WHERE `id` IN (25050, 28222);
@@ -166,5 +166,19 @@ DELETE FROM `creature_involvedrelation` WHERE `id` = 49408;
 
 DELETE FROM `npc_trainer` WHERE `entry` = 3703;
 
+DELETE FROM `npc_trainer` WHERE `entry` IN (6387, 7232);
+UPDATE `creature_template` SET `npcflag` = 147 WHERE `entry` = 31247;
+
+DELETE FROM `npc_vendor` WHERE `entry` IN (3132, 3109);
+
+UPDATE `creature_template` SET `minlevel` = 85, `maxlevel` = 85 WHERE `entry` IN (44622, 44623, 44624, 44625);
 
 
+
+DELETE FROM `pool_template` WHERE `entry` = 14352;
+INSERT INTO `pool_template` VALUES
+(14352, 15, 'Salvageable Metal (A)');
+
+DELETE FROM `pool_template` WHERE `entry` = 14355;
+INSERT INTO `pool_template` VALUES
+(14355, 34, 'Zeppelin Debris');
