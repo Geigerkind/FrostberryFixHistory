@@ -182,3 +182,15 @@ INSERT INTO `pool_template` VALUES
 DELETE FROM `pool_template` WHERE `entry` = 14355;
 INSERT INTO `pool_template` VALUES
 (14355, 34, 'Zeppelin Debris');
+
+DELETE FROM `pool_gameobject` WHERE `guid` NOT IN (SELECT `guid` FROM `gameobject`);
+
+DELETE FROM `skinning_loot_template` WHERE `entry` = 70214;
+insert into `skinning_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `lootmode`, `groupid`, `mincountOrRef`, `maxcount`) values('70214','33568','0','1','1','12','16');
+insert into `skinning_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `lootmode`, `groupid`, `mincountOrRef`, `maxcount`) values('70214','44128','25','1','1','1','1');
+
+DELETE FROM `skinning_loot_template` WHERE entry IN (36725, 37025, 37217);
+
+DELETE FROM `reference_loot_template` WHERE `item` IN (52989, 6295, 66537);
+
+UPDATE `conditions` SET `ConditionValue2` = 0 WHERE `ConditionTypeOrReference` = 17 AND `ConditionValue2` = 1;
