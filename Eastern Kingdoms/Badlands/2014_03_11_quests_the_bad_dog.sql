@@ -10,7 +10,7 @@
 -- 87608
 
 -- creature
-UPDATE `creature_template` SET `AIName` = 'SmartAI', `dynamicflags` = 8, `type_flags` = 8390896, `movementid` = 144 WHERE `entry` IN (47022, 47024, 47021);
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `dynamicflags` = 8, `type_flags` = 8400896, `movementid` = 144 WHERE `entry` IN (47022, 47024, 47021);
 UPDATE `creature_template` SET `spell1` = 87606, `spell2` = 87607 WHERE `entry` = 47022;
 UPDATE `creature_template` SET `spell3` = 87593, `spell4` = 87596 WHERE `entry` = 47024;
 UPDATE `creature_template` SET `spell5` = 87609, `spell6` = 87608 WHERE `entry` = 47021;
