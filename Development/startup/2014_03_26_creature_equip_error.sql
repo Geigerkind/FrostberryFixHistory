@@ -1612,6 +1612,7 @@ UPDATE `creature_template` SET `equipment_id` = 0 WHERE `entry` IN
 37630,
 37653,
 37654,
+38492,
 40204,
 40352,
 40374,
