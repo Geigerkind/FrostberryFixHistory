@@ -4438,7 +4438,7 @@ UPDATE `creature_template` SET `npcflag` = 0 WHERE `entry` IN (
 /* 
 * 2014_03_29_npc_trainer.sql 
 */ 
-UPDATE `creature_template` SET `npcflag` = 33 WHERE `entry` IN (50004, 50006);
+UPDATE `creature_template` SET `npcflag` = 49 WHERE `entry` IN (50004, 50006);
  
  
 /* 

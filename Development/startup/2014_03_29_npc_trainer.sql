@@ -1,1 +1,1 @@
-UPDATE `creature_template` SET `npcflag` = 33 WHERE `entry` IN (50004, 50006);
+UPDATE `creature_template` SET `npcflag` = 49 WHERE `entry` IN (50004, 50006);
