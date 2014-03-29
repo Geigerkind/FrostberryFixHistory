@@ -1,4 +1,4 @@
-UPDATE `creature_template` SET `npc_flag` = 0 WHERE `entry` IN (
+UPDATE `creature_template` SET `npcflag` = 0 WHERE `entry` IN (
 48913,
 14864,
 48006,
