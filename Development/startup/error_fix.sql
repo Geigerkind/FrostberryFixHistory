@@ -137,7 +137,8 @@ UPDATE `creature` SET `spawndist` = 0 WHERE `id` = 60011;
 
 UPDATE `quest_template` SET `RewardItemId1` = 0, `RewardItemCount1` = 0 WHERE `id` = 7061;
 
-UPDATE `quest_template` SET `SpecialFlags` = 3 WHERE `id` IN (300000, 300001, 300002, 300003, 300004);
+UPDATE `quest_template` SET `SpecialFlags` = 2 WHERE `id` IN (300001, 300002, 300003, 300004);
+UPDATE `quest_template` SET `SpecialFlags` = 3 WHERE `id` = 300000;
 UPDATE `quest_template` SET `SourceItemId` = 300000, `SourceItemCount` = 1, `RequiredSourceItemId1` = 300000, `RequiredSourceItemCount1` = 1, `RewardTitleId` = 0 WHERE `id` = 300000;
 UPDATE `quest_template` SET `SourceItemId` = 300001, `SourceItemCount` = 1, `RequiredSourceItemId1` = 300001, `RequiredSourceItemCount1` = 1 WHERE `id` = 300001;
 UPDATE `quest_template` SET `SourceItemId` = 300002, `SourceItemCount` = 1, `RequiredSourceItemId1` = 300002, `RequiredSourceItemCount1` = 1, `ObjectiveText1` = 'Duelist' WHERE `id` = 300002;
