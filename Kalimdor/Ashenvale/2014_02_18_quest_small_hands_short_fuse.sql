@@ -22,4 +22,4 @@ VALUES ('13','1','65433','0','0','31','0','3','34424','0','0','0','0','','spell_
 -- SAI
 DELETE FROM `smart_scripts` WHERE (`entryorguid` = 34424 AND `event_type` = 8);
 INSERT INTO `smart_scripts`(`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`target_type`,`target_param1`,`target_param2`,`comment`)
-VALUES ('34424','0','0','0','8','100','1','65433','1','0','0','33','34424','0','7','0','0','On Spellhit give questcredit');
+VALUES ('34424','0','0','0','8','100','0','65433','1','0','0','33','34424','0','7','0','0','On Spellhit give questcredit');
