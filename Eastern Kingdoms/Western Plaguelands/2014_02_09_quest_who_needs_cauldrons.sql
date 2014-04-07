@@ -12,7 +12,7 @@ INSERT INTO `gameobject`(`id`,`map`,`spawnMask`,`phaseMask`,`position_x`,`positi
 ('301072','0','15','1','1809','-1164','60','0','180','0');
 
 -- Updating dummy creature_template
-UPDATE `creature_template` SET `AIName` = 'SmartAI', `minlevel` = 120, `maxlevel` = 120, `mindmg` = 1, `maxdmg` = 1, `unit_flags` = 33554432 WHERE `entry` IN (44622,44623,44624,44625);
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `minlevel` = 85, `maxlevel` = 85, `mindmg` = 1, `maxdmg` = 1, `unit_flags` = 33554432 WHERE `entry` IN (44622,44623,44624,44625);
 
 -- Updating Creature
 UPDATE `creature` SET `MovementType` = 1, `spawndist` = 5, `position_x` = 1748.5, `position_y` = -1187, `position_z` = 60 WHERE `guid` = 10949;
