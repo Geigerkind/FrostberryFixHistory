@@ -37,7 +37,9 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `event_type`, `
 (6043, 0, 1, 13, 100, 1, 1, 1, 70476, 0, 12, 37759, 3, 10000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On victim casting - summon Omusa - self'),
 (6043, 0, 2, 13, 100, 1, 1, 1, 70476, 0, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On victim casting - kill - self'),
 (37747, 0, 0, 1, 100, 1, 1, 1, 1, 1, 84, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC - play emote and say text'),
-(37759, 0, 0, 1, 100, 1, 1, 1, 1, 1, 84, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC - play emote and say text'),
+(37759, 0, 0, 1, 100, 1, 1, 1, 1, 1, 1, 0, 3000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC - play emote and say text'),
+(37759, 0, 1, 52, 100, 1, 0, 37759, 0, 0, 1, 1, 2000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over - play emote and say text'),
+(37759, 0, 2, 52, 100, 1, 1, 37759, 0, 0, 69, 0, 0, 0, 0, 0, 0, 1, 0, 0, -2328, -1879, 139.12, 6.24, 'On text over - move to pos'),
 (37756, 0, 0, 1, 100, 1, 1, 1, 1, 1, 84, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC - play emote and say text'),
 (37758, 0, 0, 1, 100, 1, 1, 1, 1, 1, 84, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC - play emote and say text');
 
