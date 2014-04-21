@@ -1,3 +1,5 @@
+-- A Teamwork of Xasem and Albea
+
 /* 
 * 2014_03_26_creature_equip_error.sql 
 */ 
