@@ -1,5 +1,5 @@
 -- epic loot drop rate BOT
-SET @PDROP = 1.5;
+SET @PDROP = 3;
 
 CREATE TEMPORARY TABLE IF NOT EXISTS 
   temp_table
