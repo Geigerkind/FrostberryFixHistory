@@ -8,7 +8,7 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (13,1,68283,0,1,31,0,3,36061,0,0,0,0,'','Spell implecit target research intern');
 
 -- creature addon
-DELETE FROM `creature_tempalte_addon` WHERE `entry` = 36025;
+DELETE FROM `creature_template_addon` WHERE `entry` = 36025;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES
 (36025,0,0,0,1,0,'52855 65734 68277');
 
