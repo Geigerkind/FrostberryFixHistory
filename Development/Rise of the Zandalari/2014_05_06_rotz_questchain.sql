@@ -1,7 +1,10 @@
 -- Rise of the Zandalari(RotZ) Questchain
 -- Horde | https://www.youtube.com/watch?v=6iPX2NCZd9c
+-- Trash // Cleaning up
+DELETE FROM `creature` WHERE `guid` IN (21749, 21750, 21785, 21780, 21782);
+
 -- Making Bwembas Spirit follow the player
-UPDATE `creature_template` SET `AIName` = 'SmartAI', `inhabitType` = 5, `speed_fly` = 3.7 WHERE `entry` = 52234;
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `inhabitType` = 5, `speed_fly` = 3.7, `unit_flags` = 512 WHERE `entry` = 52234;
 
 DELETE FROM `creature_template_addon` WHERE `entry` = 52234;
 INSERT INTO `creature_template_addon` (`entry`, `auras`) VALUES
@@ -44,4 +47,5 @@ INSERT INTO `creature_questrelation` VALUES
 UPDATE `quest_template` SET `prevQuestId` = 29157 WHERE `id` = 29220;
 
 -- Serpents And Poisen
+-- Headhunter: 52978
 
