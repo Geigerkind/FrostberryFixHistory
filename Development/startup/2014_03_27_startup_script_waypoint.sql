@@ -1,1 +1,0 @@
-DELETE FROM `script_waypoint` WHERE `entry` IN (26170, 28217);
