@@ -420,8 +420,8 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (1,11496,71635,0,1,12,0,75,0,0,0,0,0,'','Item lootable if darkmoon faire event is active'),
 (1,11496,71635,0,2,12,0,78,0,0,0,0,0,'','Item lootable if darkmoon faire event is active'),
 (1,12201,71635,0,0,2,0,71634,1,0,0,0,0,'','Item lootable if player has adventureres guid'),
-(1,12201,71635,0,0,2,0,71634,1,0,0,0,0,'','Item lootable if player has adventureres guid'),
-(1,12201,71635,0,0,2,0,71634,1,0,0,0,0,'','Item lootable if player has adventureres guid'),
+(1,12201,71635,0,1,2,0,71634,1,0,0,0,0,'','Item lootable if player has adventureres guid'),
+(1,12201,71635,0,2,2,0,71634,1,0,0,0,0,'','Item lootable if player has adventureres guid'),
 (1,12201,71635,0,0,12,0,79,0,0,0,0,0,'','Item lootable if darkmoon faire event is active'),
 (1,12201,71635,0,1,12,0,75,0,0,0,0,0,'','Item lootable if darkmoon faire event is active'),
 (1,12201,71635,0,2,12,0,78,0,0,0,0,0,'','Item lootable if darkmoon faire event is active'),
@@ -1212,4 +1212,4 @@ INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,
 (1,50118,71716,0,2,12,0,78,0,0,0,0,0,'','Item lootable if darkmoon faire event is active');
 
 -- Set quest to be monthly
-UPDATE `quest_template` SET `specialflags` = 16 WHERE `id` IN (SELECT `startquest` FROM `item_template` WHERE `entry` IN (71635, 71636, 71637, 71638, 71715, 71716));
+UPDATE `quest_template` SET `specialflags` = 1, `flags` = 32768 WHERE `id` IN (SELECT `startquest` FROM `item_template` WHERE `entry` IN (71635, 71636, 71637, 71638, 71715, 71716));
