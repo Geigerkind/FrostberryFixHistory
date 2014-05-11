@@ -55,23 +55,25 @@ UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 52224;
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` = 52978;
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 17 AND `SourceEntry` = 45844;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
-(22,1,52978,0,0,29,0,52234,20,0,0,0,0,'','Work if target is not near creature'),
+(22,1,52978,0,0,29,0,52234,20,0,0,0,0,'','Work if target is near creature'),
 (17,0,45844,0,0,9,0,29219,0,0,0,0,0,'','Work if target is on quest'),
 (17,0,45844,0,0,1,0,45844,0,0,1,0,0,'','Work if target has not aura');
+
+DELETE FROM `creature_text` WHERE `entry` IN (52978);
+INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES
+(52978, 0, 0, 'Da serpants owerhelmed us.', 12, 0, 100, 16, 0, 0, 'Serpants And Poisen - Headhunter'),
+(52978, 0, 1, 'Ya saved my life.', 12, 0, 100, 16, 0, 0, 'Serpants And Poisen - Headhunter'),
+(52978, 0, 2, 'Thanks for da help.', 12, 0, 100, 16, 0, 0, 'Serpants And Poisen - Headhunter');
 
 DELETE FROM `smart_scripts` WHERE `entryorguid` IN (52978, 52224);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
 (52978, 0, 0, 1, 64, 100, 1, 0, 0, 0, 0, 85, 99138, 3, 0, 0, 0, 0, 11, 52234, 20, 0, 0, 0, 0, 'On gossip hello invoker cast cleanse on bwemba'),
 (52978, 0, 1, 2, 61, 100, 1, 0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked with previous event - close gossip'),
 (52978, 0, 2, 3, 61, 100, 1, 0, 0, 0, 0, 11, 97295, 0, 0, 0, 0, 0, 18, 30, 0, 0, 0, 0, 0, 'Linked with previous event - give questcredit'),
-(52978, 0, 3, 0, 61, 100, 1, 0, 0, 0, 0, 41, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Linked with previous event - force despawn'),
-(52978, 0, 4, 0, 1, 100, 0, 1, 1, 1, 1, 11, 45842, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'ON OOC cast quest invis'),
+(52978, 0, 3, 4, 61, 100, 1, 0, 0, 0, 0, 41, 2000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Linked with previous event - force despawn'),
+(52978, 0, 4, 0, 61, 100, 1, 0, 0, 0, 0, 1, 0, 3000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Linked with previous event - say'),
+(52978, 0, 5, 0, 1, 100, 0, 1, 1, 1, 1, 11, 45842, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'ON OOC cast quest invis'),
 (52224, 0, 0, 0, 1, 100, 0, 1, 1, 1, 1, 11, 45842, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'ON OOC cast quest invis');
-
-DELETE FROM `creature_template_addon` WHERE `entry` IN (52224, 52978);
-INSERT INTO `creature_template_addon` VALUES
-(52224, 0, 0, 0, 0, 0, '45842'),
-(52978, 0, 0, 7, 0, 65, '96572 45842');
 
 DELETE FROM `spell_area` WHERE `spell` = 45844;
 INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, `quest_end`, `aura_spell`, `racemask`, `gender`, `autocast`, `quest_start_status`, `quest_end_status`) VALUES
@@ -149,7 +151,32 @@ insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `
 ('52978','0','33','105','1','1','0','52978','-12209','-878.223','43.6028','5.79477','300','0','0','116235','0','0','0','0','0');
 
 -- Spirits Are With Us
--- 97365
-UPDATE `gameobject_template` SET `type` = 10, `data0` = 0, `data1` = 29222, `AIName` = 'SmartGameObjectAI' WHERE `entry` = 208508;
+-- 97365 spawns this guy
+UPDATE `gameobject_template` SET `type` = 10, `data0` = 0, `data1` = 29222, `data5` = 0, `data6` = 3000, `AIName` = 'SmartGameObjectAI' WHERE `entry` = 208508;
+
+DELETE FROM `creature_template` WHERE `entry` IN (80000);
+INSERT INTO `creature_template` (`entry`, `modelid1`,  `modelid2`,  `modelid3`,  `modelid4`, `name`, `minlevel`, `maxlevel`, `faction_a`, `faction_h`, `npcflag`, `speed_walk`, `speed_run`, `mindmg`, `maxdmg`, `attackpower`, `unit_flags`, `unit_flags2`, `type_flags`, `AIName`, `inhabittype`) VALUES 
+(80000, 4449, 4449, 4449, 4449, 'Spirits Are With Us - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 2, 1048576, 'SmartAI', 4);
+
+DELETE FROM `creature` WHERE `id` = 80000;
+insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) values
+('80000','0','33','5317','1','1','0','0','-12112.1','-937.257','45.4905','1.16365','300','0','0','3052','0','0','0','0','0');
+
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` = 208508;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
+(22,1,208508,1,0,29,0,52301,40,0,1,0,0,'','Work if target is not near creature');
+
+DELETE FROM `creature_text` WHERE `entry` IN (52301, 52234);
+INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES
+(52234, 0, 0, 'Now let\'s see what Bwemba\'s conjured up...', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - Bwemba'),
+(52234, 1, 0, 'Dis is serious business. Venoxis ain\'t one to trifle wit\'.', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - Bwemba'),
+(52301, 0, 0, 'You disssssturb the plans of Gurubashi, little one. It\'sss to late for you. Too late for all of you!', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
+(52301, 1, 0, 'My ssssserpants, dey already ssssslither beneath every rock an\' shrub of Ssssstranglethorn.', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
+(52301, 2, 0, 'We will reclaim thisss land. Gurubashi land. An\' we kill anyone dat getssss in our way!', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (208508);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
+(208508, 1, 0, 0, 64, 100, 0, 0, 0, 0, 0, 12, 52301, 2, 120000, 0, 0, 0, 11, 80000, 40, 0, 0, 0, 0, 'On gossip hello summon High Priest Venoxis'),
+(208508, 1, 1, 0, 64, 100, 0, 0, 0, 0, 0, 33, 52678, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 'On gossip hello give questcredit');
 
 
