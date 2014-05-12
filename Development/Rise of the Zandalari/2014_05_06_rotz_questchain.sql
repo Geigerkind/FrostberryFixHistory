@@ -151,12 +151,16 @@ insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `
 ('52978','0','33','105','1','1','0','52978','-12209','-878.223','43.6028','5.79477','300','0','0','116235','0','0','0','0','0');
 
 -- Spirits Are With Us
--- 97365 spawns this guy
 UPDATE `gameobject_template` SET `type` = 10, `data0` = 0, `data1` = 29222, `data5` = 0, `data6` = 3000, `AIName` = 'SmartGameObjectAI' WHERE `entry` = 208508;
 
-DELETE FROM `creature_template` WHERE `entry` IN (80000);
+DELETE FROM `creature_template` WHERE `entry` IN (80000, 80001, 80002);
 INSERT INTO `creature_template` (`entry`, `modelid1`,  `modelid2`,  `modelid3`,  `modelid4`, `name`, `minlevel`, `maxlevel`, `faction_a`, `faction_h`, `npcflag`, `speed_walk`, `speed_run`, `mindmg`, `maxdmg`, `attackpower`, `unit_flags`, `unit_flags2`, `type_flags`, `AIName`, `inhabittype`) VALUES 
-(80000, 4449, 4449, 4449, 4449, 'Spirits Are With Us - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 2, 1048576, 'SmartAI', 4);
+(80000, 4449, 4449, 4449, 4449, 'Spirits Are With Us - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 2, 1048576, 'SmartAI', 4),
+(80001, 4449, 4449, 4449, 4449, 'Spirits Are With Us - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 2, 1048576, 'SmartAI', 4);
+
+insert into `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `exp_unk`, `faction_A`, `faction_H`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_fly`, `scale`, `rank`, `mindmg`, `maxdmg`, `dmgschool`, `attackpower`, `dmg_multiplier`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `minrangedmg`, `maxrangedmg`, `rangedattackpower`, `type`, `type_flags`, `type_flags2`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `spell1`, `spell2`, `spell3`, `spell4`, `spell5`, `spell6`, `spell7`, `spell8`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType`, `HoverHeight`, `Health_mod`, `Mana_mod`, `Mana_mod_extra`, `Armor_mod`, `RacialLeader`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `movementId`, `RegenHealth`, `equipment_id`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`, `WDBVerified`) values
+(80002,'0','0','0','0','0','37820','0','0','0','Bwemba','','','12745','85','85','3','0','35','35','2','1.15','1.15','1','3.7','1','0','1007','1354.7','0','1571','1','0','0','2','512','2048','0','0','0','0','0','0','758.1','1062.1','220','7','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','SmartAI','0','5','1','1.5','1','1','1','0','0','0','0','0','0','0','144','1','52234','0','0','','15595');
+
 
 DELETE FROM `creature` WHERE `id` = 80000;
 insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) values
@@ -164,19 +168,42 @@ insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `
 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` = 208508;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
-(22,1,208508,1,0,29,0,52301,40,0,1,0,0,'','Work if target is not near creature');
+(22,1,208508,1,0,29,0,80002,40,0,1,0,0,'','Work if target is not near creature'),
+(22,1,208508,1,0,9,0,29222,0,0,0,0,0,'','Work if target has quest');
 
-DELETE FROM `creature_text` WHERE `entry` IN (52301, 52234);
+-- Sound Ids are missnig
+DELETE FROM `creature_text` WHERE `entry` IN (52301, 80002);
 INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES
-(52234, 0, 0, 'Now let\'s see what Bwemba\'s conjured up...', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - Bwemba'),
-(52234, 1, 0, 'Dis is serious business. Venoxis ain\'t one to trifle wit\'.', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - Bwemba'),
-(52301, 0, 0, 'You disssssturb the plans of Gurubashi, little one. It\'sss to late for you. Too late for all of you!', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
-(52301, 1, 0, 'My ssssserpants, dey already ssssslither beneath every rock an\' shrub of Ssssstranglethorn.', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
-(52301, 2, 0, 'We will reclaim thisss land. Gurubashi land. An\' we kill anyone dat getssss in our way!', 12, 0, 100, 0, 0, 0, 'Spirits Are With Us - High Priest Venoxis');
+(80002, 0, 0, 'Now let\'s see what Bwemba\'s conjured up...', 12, 0, 100, 1, 0, 0, 'Spirits Are With Us - Bwemba'),
+(80002, 1, 0, 'Dis is serious business. Venoxis ain\'t one to trifle wit\'.', 12, 0, 100, 5, 0, 0, 'Spirits Are With Us - Bwemba'),
+(52301, 0, 0, 'You disssssturb the plans of Gurubashi, little one. It\'sss to late for you. Too late for all of you!', 12, 0, 100, 15, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
+(52301, 1, 0, 'My ssssserpants, dey already ssssslither beneath every rock an\' shrub of Ssssstranglethorn.', 12, 0, 100, 1, 0, 0, 'Spirits Are With Us - High Priest Venoxis'),
+(52301, 2, 0, 'We will reclaim thisss land. Gurubashi land. An\' we kill anyone dat getssss in our way!', 12, 0, 100, 11, 0, 0, 'Spirits Are With Us - High Priest Venoxis');
 
-DELETE FROM `smart_scripts` WHERE `entryorguid` IN (208508);
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 52301;
+
+-- Visual Spawnspell is wrong 
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (208508, 52301, 80002);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
-(208508, 1, 0, 0, 64, 100, 0, 0, 0, 0, 0, 12, 52301, 2, 120000, 0, 0, 0, 11, 80000, 40, 0, 0, 0, 0, 'On gossip hello summon High Priest Venoxis'),
-(208508, 1, 1, 0, 64, 100, 0, 0, 0, 0, 0, 33, 52678, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 'On gossip hello give questcredit');
+(208508, 1, 0, 0, 64, 100, 0, 0, 0, 0, 0, 12, 80002, 2, 120000, 0, 0, 0, 11, 80001, 20, 0, 0, 0, 0, 'Linked with previous event summon bwemba'),
+(208508, 1, 1, 0, 64, 100, 0, 0, 0, 0, 0, 33, 52678, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 'On gossip hello give questcredit'),
+(52301, 0, 0, 0, 1, 100, 1, 1, 1, 1, 1, 11, 70509, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC cast explosion'),
+(52301, 0, 1, 0, 60, 100, 1, 1500, 1500, 1, 1, 1, 0, 4000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over say'),
+(52301, 0, 2, 0, 52, 100, 1, 0, 52301, 0, 0, 1, 1, 4000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over say'),
+(52301, 0, 3, 0, 52, 100, 1, 1, 52301, 0, 0, 1, 2, 4000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over say'),
+(52301, 0, 4, 0, 52, 100, 1, 2, 52301, 0, 0, 11, 54694, 3, 0, 0, 0, 0, 19, 80002, 40, 0, 0, 0, 0, 'On text over cast dummy spell'),
+(52301, 0, 5, 6, 52, 100, 1, 2, 52301, 0, 0, 11, 70509, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over cast explosion'),
+(52301, 0, 6, 0, 61, 100, 1, 0, 0, 0, 0, 41, 1500, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Linked with previous event - despawn'),
+(80002, 0, 0, 0, 1, 100, 1, 100, 100, 1, 1, 1, 0, 1500, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On OOC say text'),
+(80002, 0, 1, 0, 52, 100, 1, 0, 80002, 0, 0, 12, 52301, 2, 120000, 0, 0, 0, 11, 80000, 20, 0, 0, 0, 0, 'On text over summon High Priest Venoxis'),
+(80002, 0, 2, 3, 8, 100, 1, 54694, 1, 1, 1, 1, 1, 3000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over say'),
+(80002, 0, 3, 0, 61, 100, 1, 0, 0, 0, 0, 41, 5000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On text over say');
+
+-- Track the Tracker
+UPDATE `quest_template` SET `SourceSpellId` = 97466 WHERE `id` = 29226;
+
+-- The Hunter's Revenge
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 52346;
+
 
 
