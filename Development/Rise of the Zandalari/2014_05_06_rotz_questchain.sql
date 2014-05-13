@@ -1,5 +1,6 @@
 -- Rise of the Zandalari(RotZ) Questchain
--- Horde | https://www.youtube.com/watch?v=6iPX2NCZd9c
+-- Horde | https://www.youtube.com/watch?v=6iPX2NCZd9c 1
+-- Horde | https://www.youtube.com/watch?v=R2JxFS2p4Js 2
 -- Trash // Cleaning up
 DELETE FROM `creature` WHERE `guid` IN (21749, 21750, 21785, 21780, 21782);
 
@@ -164,7 +165,8 @@ insert into `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entr
 
 DELETE FROM `creature` WHERE `id` = 80000;
 insert into `creature` (`id`, `map`, `zone`, `area`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) values
-('80000','0','33','5317','1','1','0','0','-12112.1','-937.257','45.4905','1.16365','300','0','0','3052','0','0','0','0','0');
+('80000','0','33','5317','1','1','0','0','-12112.1','-937.257','45.4905','1.16365','300','0','0','3052','0','0','0','0','0'),
+('80001','0','33','5317','1','1','0','0','-12111.1','-925.361','45.0478','4.60017','300','0','0','3052','0','0','0','0','0');
 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` = 208508;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
@@ -203,7 +205,54 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 UPDATE `quest_template` SET `SourceSpellId` = 97466 WHERE `id` = 29226;
 
 -- The Hunter's Revenge
-UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 52346;
+UPDATE `quest_template` SET `method` = 2, `flags` = 1032 WHERE `id` = 29227;
 
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` IN (52346, 52349);
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `unit_flags` = 0, `speed_walk` = 3.4, `speed_run` = 3.4, `speed_swim` = 3.4 WHERE `entry` = 52315;
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `unit_flags` = 256, `vehicleid` = 1589, `npcflag` = 16777216, `speed_walk` = 1.6, `speed_run` = 1.6 WHERE `entry` = 52313;
 
+DELETE FROM `creature_text` WHERE `entry` IN (52315);
+INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `comment`) VALUES
+(52315, 0, 0, 'Let\'s see what we got here...', 12, 0, 100, 16, 0, 0, 'The Hunter\'s Revenge - Grent Direhammer'),
+(52315, 1, 0, 'Hmm... The beast looks smaller than I would have thought.', 12, 0, 100, 16, 0, 0, 'The Hunter\'s Revenge - Grent Direhammer'),
+(52315, 2, 0, 'It\'s got me!', 14, 0, 100, 15, 0, 0, 'The Hunter\'s Revenge - Grent Direhammer');
+
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` = 52313;
+INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
+(52313,62309,0,0);
+
+DELETE FROM `waypoints` WHERE `entry` = 52313;
+INSERT INTO `waypoints` (`entry`, `pointid`, `position_x`, `position_y`, `position_z`) VALUES
+(52313,1,-11598.6, -897.4, 69);
+
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId` = 22 AND `SourceEntry` = 52349;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`,`SourceGroup`,`SourceEntry`,`SourceId`,`ElseGroup`,`ConditionTypeOrReference`,`ConditionTarget`,`ConditionValue1`,`ConditionValue2`,`ConditionValue3`,`NegativeCondition`,`ErrorType`,`ErrorTextId`,`ScriptName`,`Comment`) VALUES 
+(22,1,52349,0,0,9,0,29228,0,0,1,0,0,'','Work if target has quest not quest');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (52346, 52315, 52349, 52313);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
+(52346, 0, 0, 0, 19, 100, 0, 29227, 0, 0, 0, 12, 52315, 2, 300000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On quest accept summon grent'),
+(52315, 0, 0, 0, 1, 100, 1, 1, 1, 1, 1, 29, 0, 0, 0, 0, 0, 0, 18, 20, 0, 0, 0, 0, 0, 'On OOC follow player'),
+(52315, 0, 1, 0, 8, 100, 1, 54694, 1, 1, 1, 1, 0, 800, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On Spellhit say'),
+(52315, 0, 2, 0, 52, 100, 1, 0, 52315, 0, 0, 1, 1, 1000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On textover say'),
+(52315, 0, 3, 0, 52, 100, 1, 0, 52315, 0, 0, 12, 52313, 2, 30000, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On textover summon Mauti'),
+(52315, 0, 4, 0, 52, 100, 1, 1, 52315, 0, 0, 11, 62309, 3, 0, 0, 0, 0, 11, 52313, 20, 0, 0, 0, 0, 'On textover cast ride vehicle on mauti'),
+(52315, 0, 5, 0, 8, 100, 1, 62309, 64, 1, 1, 1, 2, 800, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'On Spellhit say'),
+(52349, 0, 0, 1, 6, 100, 1, 0, 0, 0, 0, 11, 54694, 3, 0, 0, 0, 0, 11, 52315, 20, 0, 0, 0, 0, 'On death cast dummy spell on grent'),
+(52349, 0, 1, 2, 61, 100, 1, 0, 0, 0, 0, 15, 29227, 0, 0, 0, 0, 0, 18, 30, 0, 0, 0, 0, 0, 'Linked with previous event - give questcredit'),
+(52349, 0, 2, 0, 61, 100, 1, 0, 0, 0, 0, 7, 29228, 0, 0, 0, 0, 0, 18, 30, 0, 0, 0, 0, 0, 'Linked with previous event - give quest'),
+(52313, 0, 0, 0, 60, 100, 1, 3000, 3000, 1, 1, 53, 1, 52313, 0, 0, 27000, 0, 1, 0, 0, 0, 0, 0, 0, 'On Update start wp'),
+(52313, 0, 1, 2, 40, 100, 1, 1, 0, 0, 0, 97, 24, 8, 0, 0, 0, 0, 1, 0, 0, -11618, -913, 78.2, 4, 'On wp reached jump'),
+(52313, 0, 2, 3, 61, 100, 1, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 0, 11, 52315, 20, 0, 0, 0, 0, 'Linked with previous event - kill grent'),
+(52313, 0, 3, 0, 61, 100, 1, 0, 0, 0, 0, 41, 2000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Linked with previous event - despawn');
+
+-- Follow That Cat
+-- Keine Ahnung, warum das nicht funktioniert...
+DELETE FROM `creature_template` WHERE `entry` IN (80003);
+INSERT INTO `creature_template` (`entry`, `modelid1`,  `modelid2`,  `modelid3`,  `modelid4`, `name`, `minlevel`, `maxlevel`, `faction_a`, `faction_h`, `npcflag`, `speed_walk`, `speed_run`, `mindmg`, `maxdmg`, `attackpower`, `unit_flags`, `unit_flags2`, `type_flags`, `AIName`, `inhabittype`) VALUES 
+(80003, 4449, 4449, 4449, 4449, 'Follow That Cat - Trigger', 60, 60, 35, 35, 0, 0, 0, 1, 1, 1, 4, 0, 1048576, 'SmartAI', 1);
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (80003);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
+(80003, 0, 0, 0, 1, 100, 0, 20, 20, 20, 20, 33, 52911, 0, 0, 0, 0, 0, 18, 50, 0, 0, 0, 0, 0, 'On OOC give questcredit');
 

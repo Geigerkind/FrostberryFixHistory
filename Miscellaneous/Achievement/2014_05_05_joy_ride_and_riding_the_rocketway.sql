@@ -1268,7 +1268,7 @@ INSERT INTO `achievement_criteria_dbc` (`ID`, `achievement`, `type`, `value1`, `
 -- creature vehicleid: 1607 (not working) 
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` IN (43217);
 
-DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` IN (52585, 7644, 7645, 7646, 7647, 7648, 7649, 7650, 7651, 7652, 7653, 7654, 7654, 7655, 7656, 7657, 7658, 7659, 7660, 7661, 7662);;
+DELETE FROM `npc_spellclick_spells` WHERE `npc_entry` IN (52585, 7644, 7645, 7646, 7647, 7648, 7649, 7650, 7651, 7652, 7653, 7654, 7654, 7655, 7656, 7657, 7658, 7659, 7660, 7661, 7662);
 INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `cast_flags`, `user_type`) VALUES
 (52585,62309,1,0),
 (7644,62309,1,0),
