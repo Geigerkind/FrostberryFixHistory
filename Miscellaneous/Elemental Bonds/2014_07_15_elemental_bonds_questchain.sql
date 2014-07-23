@@ -1,7 +1,7 @@
 -- Elemental Bonds
 -- Questchain
-UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29326, `Method` = 0, `PrevQuestId` = 29201 WHERE `id` = 29439;
-UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29326, `Method` = 0, `PrevQuestId` = 29201 WHERE `id` = 29440;
+UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29326, `Method` = 2, `PrevQuestId` = 29201 WHERE `id` = 29439;
+UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29326, `Method` = 2, `PrevQuestId` = 29201 WHERE `id` = 29440;
 UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29335 WHERE `id` = 29326;
 UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29327 WHERE `id` = 29335;
 UPDATE `quest_template` SET `Flags` = 8, `SpecialFlags` = 0, `NextQuestId` = 29336 WHERE `id` = 29327;
