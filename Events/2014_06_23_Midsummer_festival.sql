@@ -1,7 +1,7 @@
 -- Midsummer Festival (ID: 1)
 -- Alliance and Horde Bonfire interact issue || OLD DISPLAY: 7734
 UPDATE `gameobject_template` SET `data0` = 0, `displayid` = 6754 WHERE (`name` LIKE '%Bonfire%' AND `ScriptName` = 'go_midsummer_bonfire');
-UPDATE `gameobject_template` SET `data0` = 0, `displayid` = 6754 WHERE `entry` IN (208184, 208188, 208187, 208094, 207983, 208090, 207986, 208093, 208089, 207985);
+UPDATE `gameobject_template` SET `data0` = 0, `displayid` = 6754 WHERE `entry` IN (208184, 208188, 208187, 208094, 207983, 208090, 207986, 208093, 208089, 207985, 207982);
 
 -- Trash Spawn
 DELETE FROM `creature` WHERE `guid` IN (127615, 1407, 127487, 127577, 127578, 127498, 127506, 99906, 99905, 69232, 1388, 1425, 1426, 69242, 69241, 127630, 127590, 127593, 127631, 127589, 127636, 127529, 127456, 127584, 127579, 127592, 127588, 1401, 162319, 162297, 162364);
@@ -257,8 +257,15 @@ UPDATE `creature` SET `position_x` = 10003.74, `position_y` = 2221.33, `position
 UPDATE `quest_template` SET `RequiredRaces` = 2098253 WHERE `id` IN (11821); -- Nagrand Quest
 UPDATE `quest_template` SET `RequiredRaces` = 946 WHERE `id` IN (11732, 11755); -- Arathi Highlands / Hinterlands
 
-DELETE FROM `gameobject_questrelation` WHERE `id` IN (187914, 187938, 208089, 207982, 207985, 208093, 187954, 187966, 187974, 187559, 208094, 207983, 208090, 207986);
+DELETE FROM `gameobject_questrelation` WHERE `id` IN (187958, 187948, 187957, 187914, 187938, 208089, 207982, 207985, 208093, 187954, 187966, 187974, 187559, 208094, 207983, 208090, 207986, 187928, 187932, 187968, 187971);
 INSERT INTO `gameobject_questrelation` VALUES
+(187958, 11770), -- Durotar (Alliance)
+(187948, 11765), -- Ashenvale (Alliance)
+(187957, 11769), -- Desolace (Alliance)
+(187971, 11783), -- Northern Barrens (Alliance)
+(187968, 11780), -- Stonetalon Mountains (Alliance)
+(187932, 11749), -- Loch Modan (Horde)
+(187928, 11745), -- Elwynn Forest (Horde)
 (207986, 28914), -- Southern Barrens (Horde)
 (208090, 28944), -- Twilight Highlands (Horde)
 (207983, 28911), -- Stranglethorn (Horde)
@@ -274,8 +281,10 @@ INSERT INTO `gameobject_questrelation` VALUES
 (187914, 11732), -- Arathi Highlands
 (187938, 11755); -- Hinterlands
 
-DELETE FROM `gameobject_involvedrelation` WHERE `id` IN (187914, 187938, 187954, 187974, 187559);
+DELETE FROM `gameobject_involvedrelation` WHERE `id` IN (187914, 187938, 187954, 187974, 187559, 187928, 187932);
 INSERT INTO `gameobject_involvedrelation` VALUES
+(187932, 11749), -- Loch Modan (Horde)
+(187928, 11745), -- Elwynn Forest (Horde)
 (187559, 11580), -- Silverpine
 (187974, 11786), -- Tirisfal
 (187954, 11766), -- Badlands

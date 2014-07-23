@@ -1,13 +1,13 @@
 -- Mage / Warlock / Druids / Priest / Schaman
 --Horde
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `RequiredRaces` = 946, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` IN (29452, 29129);
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29285, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29308;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29308, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29309;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `RequiredRaces` = 946, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` IN (29452, 29129);
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29285, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29308;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29308, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29309;
 
 -- Alliance
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `RequiredRaces` = 2098253, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` IN (29453, 29132);
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29285, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29307;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29307, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29312;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `RequiredRaces` = 2098253, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` IN (29453, 29132);
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29285, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29307;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29307, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29312;
 UPDATE `quest_template` SET `SourceSpellId` = 94259 WHERE `id` = 29453;
 
 -- General
@@ -31,17 +31,17 @@ insert into `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry
 (22,5,53115,0,0,15,0,1488,0,0,0,0,0, '', ''),
 (22,5,53115,0,0,16,0,2098253,0,0,0,0,0, '', '');
 
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `Flags` = 10 WHERE `id` = 29134;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29134, `NextQuestID` = 29193, `NextQuestIdChain` = 29193, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29135;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29135, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29193;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29193, `SpecialFlags` = 0 WHERE `id` = 29194;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29194, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29225;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `Flags` = 72 WHERE `id` = 29134;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29134, `NextQuestID` = 29193, `NextQuestIdChain` = 29193, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29135;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29135, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29193;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29193, `SpecialFlags` = 0, `Flags` = 72 WHERE `id` = 29194;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29194, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29225;
 UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29225, `SpecialFlags` = 0 WHERE `id` = 29234;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29234, `NextQuestIdChain` = 29240, `SpecialFlags` = 0 WHERE `id` = 29239;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29239, `SpecialFlags` = 0 WHERE `id` = 29240;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29240, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29269;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29269 WHERE `id` = 29270;
-UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29270, `Flags` = 10, `SpecialFlags` = 0 WHERE `id` = 29285;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29234, `NextQuestIdChain` = 29240, `SpecialFlags` = 0, `Flags` = 72 WHERE `id` = 29239;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29239, `SpecialFlags` = 0, `Flags` = 72 WHERE `id` = 29240;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29240, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29269;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29269, `Flags` = 72 WHERE `id` = 29270;
+UPDATE `quest_template` SET `RequiredClasses` = 1488, `PrevQuestId` = 29270, `Flags` = 72, `SpecialFlags` = 0 WHERE `id` = 29285;
 
 UPDATE `creature_involvedrelation` SET `id` = 6700 WHERE `quest` IN (29129, 29132);
 UPDATE `creature_questrelation` SET `id` = 6700 WHERE `quest` = 29134;
