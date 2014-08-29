@@ -67,15 +67,17 @@ INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `probabil
 
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` IN (53524, 53519, 53518);
 
-DELETE FROM `smart_scripts` WHERE `entryorguid` IN (53524, 53519, 53518);
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53518;
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53524 AND `id` = 2;
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53519 AND `id` >= 2;
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
-(53524, 0, 0, 0, 20, 100, 0, 29337, 0, 0, 0, 1, 0, 30000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Cyclonas - On quest reward say text'),
-(53519, 0, 0, 0, 1, 100, 1, 1, 1, 1, 1, 1, 0, 8000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On OOC say text'),
-(53519, 0, 1, 0, 52, 100, 1, 0, 53519, 0, 0, 1, 1, 8000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
-(53519, 0, 2, 0, 60, 100, 0, 30000, 30000, 30000, 30000, 1, 2, 20000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update say text'),
-(53519, 0, 3, 0, 20, 100, 0, 29327, 0, 0, 0, 1, 4, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On quest reward say text'),
-(53519, 0, 4, 0, 60, 100, 1, 175000, 175000, 1, 1, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update kill self'),
-(53519, 0, 5, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn self'),
+(53524, 0, 2, 0, 20, 100, 0, 29337, 0, 0, 0, 1, 0, 30000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Cyclonas - On quest reward say text'),
+(53519, 0, 2, 0, 1, 100, 1, 1, 1, 1, 1, 1, 0, 8000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On OOC say text'),
+(53519, 0, 3, 0, 52, 100, 1, 0, 53519, 0, 0, 1, 1, 8000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53519, 0, 4, 0, 60, 100, 0, 35000, 35000, 35000, 35000, 1, 2, 20000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update say text'),
+(53519, 0, 5, 0, 20, 100, 0, 29327, 0, 0, 0, 1, 4, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On quest reward say text'),
+(53519, 0, 6, 0, 60, 100, 1, 175000, 175000, 1, 1, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update kill self'),
+(53519, 0, 7, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn self'),
 (53518, 0, 0, 0, 60, 100, 0, 25000, 25000, 25000, 25000, 1, 0, 20000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Thrall - On update say text');
 
 -- Abyssal Depths Event
@@ -98,7 +100,8 @@ INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `probabil
 
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` IN (53677, 53652);
 
-DELETE FROM `smart_scripts` WHERE `entryorguid` IN (53677, 53652);
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53677;
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53652 AND `id` >= 2;
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
 (53677, 0, 0, 0, 1, 100, 1, 1, 1, 1, 1, 1, 0, 15000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Hydros - On OOC say text'),
 (53677, 0, 1, 0, 52, 100, 1, 0, 53677, 0, 0, 1, 1, 17000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Hydros - On text over say text'),
@@ -106,14 +109,14 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (53677, 0, 3, 0, 52, 100, 1, 0, 53652, 0, 0, 1, 2, 15000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Hydros - On text over say text'),
 (53677, 0, 4, 0, 60, 100, 1, 175000, 175000, 1, 1, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Hydros - On update kill self'),
 (53677, 0, 5, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Hydros - On death respawn self'),
-(53652, 0, 0, 0, 60, 100, 0, 22000, 22000, 22000, 22000, 1, 1, 22000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On Update say text'),
-(53652, 0, 1, 0, 19, 100, 0, 29328, 0, 0, 0, 1, 2, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On quest accept say text'),
-(53652, 0, 2, 0, 20, 100, 1, 29328, 0, 0, 0, 1, 3, 14000, 0, 0, 0, 0, 19, 53677, 50, 0, 0, 0, 0, 'Aggra - On quest reward make Hydros say text'),
-(53652, 0, 3, 0, 52, 100, 1, 3, 53677, 0, 0, 1, 3, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
-(53652, 0, 4, 0, 52, 100, 1, 3, 53652, 0, 0, 1, 4, 8000, 0, 0, 0, 0, 19, 53677, 50, 0, 0, 0, 0, 'Aggra - On text over make Hydros say text'),
-(53652, 0, 5, 0, 52, 100, 1, 4, 53677, 0, 0, 1, 4, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
-(53652, 0, 6, 0, 60, 100, 1, 175000, 175000, 1, 1, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update kill self'),
-(53652, 0, 7, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn self');
+(53652, 0, 2, 0, 60, 100, 0, 22000, 22000, 22000, 22000, 1, 1, 22000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On Update say text'),
+(53652, 0, 3, 0, 19, 100, 0, 29328, 0, 0, 0, 1, 2, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On quest accept say text'),
+(53652, 0, 4, 0, 20, 100, 1, 29328, 0, 0, 0, 1, 3, 14000, 0, 0, 0, 0, 19, 53677, 50, 0, 0, 0, 0, 'Aggra - On quest reward make Hydros say text'),
+(53652, 0, 5, 0, 52, 100, 1, 3, 53677, 0, 0, 1, 3, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53652, 0, 6, 0, 52, 100, 1, 3, 53652, 0, 0, 1, 4, 8000, 0, 0, 0, 0, 19, 53677, 50, 0, 0, 0, 0, 'Aggra - On text over make Hydros say text'),
+(53652, 0, 7, 0, 52, 100, 1, 4, 53677, 0, 0, 1, 4, 10000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53652, 0, 8, 0, 60, 100, 1, 175000, 175000, 1, 1, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On update kill self'),
+(53652, 0, 9, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn self');
 
 -- Molten Front
 DELETE FROM `creature_text` WHERE `entry` IN (53925, 53959);
@@ -206,6 +209,37 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (55083, 0, 13, 0, 52, 100, 1, 8, 53960, 0, 0, 1, 9, 10000, 0, 0, 0, 0, 19, 53960, 50, 0, 0, 0, 0, 'Aggra - On text over make Thrall say text 10'),
 (55083, 0, 14, 0, 52, 100, 1, 9, 53960, 0, 0, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over kill self'),
 (55083, 0, 15, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn');
+
+-- Deepholm Thrall in stone event
+DELETE FROM `creature_text` WHERE `entry` IN (53750, 53736);
+INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `probability`, `emote`, `sound`, `comment`, `BroadcastTextId`) VALUES
+(53750, 0, 0, "There's too many of them! I don't know how long we can hold out! Go'el, now would be a good time to wake up!", 12, 100, 0, 25696, 'Aggra', 52300),
+(53750, 1, 0, "Did he just...? Go'el, can you hear me? We need your help! Do something!", 12, 100, 0, 25697, 'Aggra', 52302),
+(53750, 2, 0, "GO'EL! Pull it together or we're all going to DIE!", 12, 100, 0, 25698, 'Aggra', 52303),
+(53750, 3, 0, "He did NOT just say that!", 12, 100, 0, 25699, 'Aggra', 52305),
+(53750, 4, 0, "Damn you, Go'el - WAKE UP! Don't let it end like this! We've come too far to fail now!", 12, 100, 0, 25700, 'Aggra', 52306),
+(53750, 5, 0, "Oh, don't you tell ME to be patient, you green-skinned...", 12, 100, 0, 25701, 'Aggra', 52308),
+(53750, 6, 0, "You're almost home, my love. Our time is so brief. You will change again, Go'el - but I will find you! I'll NEVER give up on you!", 12, 100, 0, 25702, 'Aggra', 52311),
+(53736, 0, 0, "We are patient.", 12, 100, 0, 25696, 'Thrall', 52301),
+(53736, 1, 0, "We are patient.", 12, 100, 0, 25696, 'Thrall', 52304),
+(53736, 2, 0, "We are patient.", 12, 100, 0, 25696, 'Thrall', 52307),
+(53736, 3, 0, "NOW. AWAKEN.", 12, 100, 0, 25696, 'Thrall', 52309),
+(53736, 4, 0, "Aggra... I heard your voice... calling me back...$b$bWhere are we?", 12, 100, 0, 25696, 'Thrall', 52310),
+(53736, 5, 0, "Aggra? Aggra! I can't hear-", 12, 100, 0, 25696, 'Thrall', 52311);
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 53750 AND `id` >= 3;
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`,`target_param1`,`target_param2`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES 
+(53750, 0, 3, 0, 1, 100, 1, 1, 1, 1, 1, 1, 0, 8000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On OOC say text'),
+(53750, 0, 4, 0, 52, 100, 1, 0, 53750, 0, 0, 1, 0, 2500, 0, 0, 0, 0, 19, 53736, 50, 0, 0, 0, 0, 'Aggra - On text over make Thrall say text'),
+(53750, 0, 5, 0, 52, 100, 1, 0, 53736, 0, 0, 1, 1, 7200, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53750, 0, 6, 0, 52, 100, 1, 1, 53750, 0, 0, 1, 2, 4000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53750, 0, 7, 0, 52, 100, 1, 2, 53750, 0, 0, 1, 1, 2500, 0, 0, 0, 0, 19, 53736, 50, 0, 0, 0, 0, 'Aggra - On text over make Thrall say text'),
+(53750, 0, 8, 0, 52, 100, 1, 1, 53736, 0, 0, 1, 3, 2800, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53750, 0, 9, 0, 52, 100, 1, 3, 53750, 0, 0, 1, 4, 6000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53750, 0, 10, 0, 52, 100, 1, 4, 53750, 0, 0, 1, 2, 2500, 0, 0, 0, 0, 19, 53736, 50, 0, 0, 0, 0, 'Aggra - On text over make Thrall say text'),
+(53750, 0, 11, 0, 52, 100, 1, 2, 53736, 0, 0, 1, 5, 16000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over say text'),
+(53750, 0, 12, 0, 52, 100, 1, 5, 53750, 0, 0, 37, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On text over kill self'),
+(53750, 0, 13, 0, 6, 100, 1, 0, 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Aggra - On death respawn');
 
 -- Phasing
 -- Hyjal
