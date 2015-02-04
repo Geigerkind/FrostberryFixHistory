@@ -1,0 +1,1 @@
+UPDATE `quest_template` SET `Flags` = 8192, `SpecialFlags` = 1, `RequiredSkillId` = 185 WHERE `id` = 14203;

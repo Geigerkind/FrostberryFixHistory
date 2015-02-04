@@ -1,0 +1,2 @@
+UPDATE `gossip_menu_option` SET `id` = 1 WHERE `id` = 2 AND `OptionBroadcastTextID` = 3370 AND `menu_id` = 7952;
+UPDATE `gossip_menu_option` SET `id` = 2 WHERE `id` = 3 AND `OptionBroadcastTextID` = 10693 AND `menu_id` = 7952;
